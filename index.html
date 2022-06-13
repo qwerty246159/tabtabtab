@@ -152,7 +152,16 @@
         tabMark.click(function(e) {
             const _href = $(this).children('a').attr('href');
             tabPanel.hide();
-            $(_href).show();  
+            $(_href).show();
+
+            // Remove color for active tab menu
+            tabMenu.removeClass('on');
+
+            // Set color for active tab menu
+            const activeTab = tabMenu.children('a').filter(function() {                
+                return this.href.substr(-6) === _href
+            });
+            activeTab.parent().addClass('on');
         })
 
         tabMenu.click(function(e) {
