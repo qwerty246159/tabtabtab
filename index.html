@@ -142,12 +142,18 @@
 <script>
     $(function() {
         //  tab
-        var tabMark = $('.sub_MarkImg > li > a'),
+        var tabMark = $('.sub_MarkImg > li'),
             tabMenu = $('.s0201 .tabs > li'),
             tabPanel = $('.s0201 .tabCon > li');
 
         tabPanel.hide();
         tabPanel.first().show();
+
+        tabMark.click(function(e) {
+            const _href = $(this).children('a').attr('href');
+            tabPanel.hide();
+            $(_href).show();  
+        })
 
         tabMenu.click(function(e) {
             e.preventDefault();
