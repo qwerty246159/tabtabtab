@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <!--css-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" sizes="16x16 32x32" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="font/fonts.css">
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <link rel="stylesheet" type="text/css" href="css/default.css">
+    <link rel="stylesheet" type="text/css" href="css/include.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--css-->
+
+    <!--스크립트-->
+    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <!--스크립트-->
+</head>
+<style>
+    .s0201 {}
+
+    .s0201 .tabs {
+        display: flex;
+        margin-top: 60px;
+    }
+
+    .s0201 .tabs li {
+        width: 33.33%;
+        height: 50px;
+        border: 1px solid #ddd;
+        border-bottom: 0;
+        text-align: center;
+    }
+
+    .s0201 .tabs li+li {
+        border-left: 0;
+    }
+
+    .s0201 .tabs li a {
+        display: block;
+        line-height: 50px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .s0201 .tabs li.on a {
+        color: #fff;
+        background: #003d6a;
+    }
+
+    .s0201 .tabCon {
+        border-top: 2px solid #003d6a;
+        height: 1957px;
+        box-sizing: border-box;
+        padding-top: 105px;
+    }
+
+    .sub_MarkImg {
+        position: relative;
+        width: 700px;
+        height: 800px;
+        background: url(https://via.placeholder.com/700x800);
+        margin: 0 auto;
+    }
+
+    .sub_MarkImg a {
+        width: 100%;
+        height: 100px;
+        background: rgba(0, 0, 0, 0.2);
+        position: absolute;
+        display: block;
+        text-align:center;
+        line-height:100px;
+        font-size:80px;
+    }
+
+    .sub_MarkImg li:nth-of-type(1) a {
+        top: 0
+    }
+
+    .sub_MarkImg li:nth-of-type(2) a {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .sub_MarkImg li:nth-of-type(3) a {
+        bottom: 0
+    }
+</style>
+
+<body>
+    <!--전체-->
+    <div class="s0201">
+        <div class="wrap">
+            <div style="height:80px;"></div>
+
+            <ul class="sub_MarkImg">
+                <li><a href="#tab01" class="mark">01</a></li>
+                <li><a href="#tab02">02</a></li>
+                <li><a href="#tab03">03</a></li>
+            </ul>
+        </div>
+        
+        <div style="height:300px;"></div>
+
+        <div class="tabWrap">
+            <div class="wrap">
+                <ul class="tabs">
+                    <li class="on tabss"><a href="#tab01">01</a></li>
+                    <li><a href="#tab02">02</a></li>
+                    <li><a href="#tab03">03</a></li>
+                </ul>
+            </div>
+
+            <ul class="tabCon">
+                <li id="tab01" class="tabCon01 on">
+                    <p class="tit"><strong>01</strong></p>
+                </li>
+
+                <li id="tab02" class="tabCon02">
+                    <p class="tit"><strong>02</strong></p>
+                </li>
+
+                <li id="tab03" class="tabCon03">
+                    <p class="tit"><strong>03</strong></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="height:120px;"></div>
+
+    <!--전체-->
+</body>
+
+</html>
+
+<script>
+    $(function() {
+        //  tab
+        var tabMark = $('.sub_MarkImg > li > a'),
+            tabMenu = $('.s0201 .tabs > li'),
+            tabPanel = $('.s0201 .tabCon > li');
+
+        tabPanel.hide();
+        tabPanel.first().show();
+
+        tabMenu.click(function(e) {
+            e.preventDefault();
+            var _href = $(this).children('a').attr('href');
+
+            tabPanel.hide();
+            $(_href).show();
+
+            tabMenu.removeClass('on');
+            $(this).addClass('on');
+        });
+    });
+</script>
